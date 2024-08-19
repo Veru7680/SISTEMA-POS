@@ -68,18 +68,86 @@
                   <p>LISTA DE USUARIOS</p>
                 </a>
               </li>
+            </ul>
+          </li>
 
 
+
+
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+              CLIENTE
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
               <li class="nav-item">
                 <a href="VUsuario" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>SALIR</p>
+                  <p>LISTA DE CLIENTE</p>
                 </a>
               </li>
 
+            </ul>
+          </li>
+
+
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+              PRODUCTO
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="VUsuario" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>LISTA DE PRODUCTO</p>
+                </a>
+              </li>
 
             </ul>
           </li>
+
+
+
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+              VENTAS
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="VUsuario" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>EMITIR FACTURA</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+
+          <li class="nav ">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-sign-out-alt"></i>
+        <p>
+            SALIR
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+</li>
+
 
 
           
