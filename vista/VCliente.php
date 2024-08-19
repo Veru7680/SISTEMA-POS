@@ -21,11 +21,11 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>#</th>
+                  <th>#</th>
                     <th>Login</th>
                     <th>Perfil</th>
                     <th>Estado</th>
-                    <th>Ultimo Acceso</th>
+                    <th>Ultimo acceso</th>
                     <th>Fecha de registro</th>
                     <td>
                     <button class="btn btn-primary" onclick="MNuevoCliente()"> nuevo </button>
