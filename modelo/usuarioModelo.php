@@ -6,23 +6,26 @@ class ModeloUsuario {
     acceso al sistema
     */
 
-    static public function mldAccesoUsuario($usuario) {
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM usuario WHERE login_usuario = :usuario");
-        $stmt->bindParam(":usuario", $usuario, PDO::PARAM_STR);
+    static public function mdlAccesoUsuario($usuario){
+        $stmt=Conexion::conectar()->prepare("select * from usuario where login_usuario='$usuario'");
         $stmt->execute();
-
+    
         return $stmt->fetch();
-        $stmt = null; // Cerrar la conexión
-    }
+    
+        $stmt->close();
+        $stmt->null;
+    
+      }
 
-    static public function mdlInfoUsuarios() { // Corrigiendo el nombre del método
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM usuario");
+    static public function mdlInfoUsuarios(){
+        $stmt=Conexion::conectar()->prepare("select * from usuario");
         $stmt->execute();
-
-        return $stmt->fetchAll(); // Cambié fetch() a fetchAll() para obtener todos los registros
-        $stmt -> close();
-        $stmt -> null; // Cerrar la conexión
-    }
+    
+        return $stmt->fetchAll();
+    
+        $stmt->close();
+        $stmt->null;
+      }
     static public function mdlRegUsuario($data) { 
         $loginUsuario=$data["loginUsuario"];
         $password=$data["password"];
@@ -39,17 +42,29 @@ class ModeloUsuario {
 
 
     } 
+    static public function mdlActualizarAcceso($fechaHora, $id){
+        $stmt=Conexion::conectar()->prepare("update usuario set ultimo_login='$fechaHora' where id_usuario='$id'");
     
-    /*static public function mdlInfoUsuario() { }  agregar eso ver en el video y git*/
+        if($stmt->execute()){
+          return "ok";
+        }else{
+          return "error";
+        }
     
-    static public function mdlInfoUsuario($id) { // Corrigiendo el nombre del método
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM usuario where id_usuario=$id");
+        $stmt->close();
+        $stmt->null();
+      }
+    
+      static public function mdlInfoUsuario($id){
+        $stmt=Conexion::conectar()->prepare("select * from usuario where id_usuario=$id");
         $stmt->execute();
-
-        return $stmt->fetch(); // Cambié fetch() a fetchAll() para obtener todos los registros
-        $stmt -> close();
-        $stmt -> null; // Cerrar la conexión
-    }
+    
+        return $stmt->fetch();
+    
+        $stmt->close();
+        $stmt->null;
+      }
+      
     static public function mdlEditUsuario($data){
         //var_dump($data);
 
