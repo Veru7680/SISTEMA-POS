@@ -23,21 +23,20 @@ class ControladorCliente
 
   static public function ctrRegCliente()
   {
-    require "../modelo/clienteModelo.php";
-
-    $data = array(
-      "rsocial" => $_POST["rsocial"],
-      "nit" => $_POST["nit"],
-      "direccion" => $_POST["direccion"],
-      "ncliente" => $_POST["ncliente"],
-      "telefono" => $_POST["telefono"],
-      "email" => $_POST["email"]
+      require "../modelo/clienteModelo.php";
+      $data = array(
+        "razon_social_cliente"=>$_POST["razon_social_cliente"],
+        "nit_ci_cliente"=>$_POST["nit_ci_cliente"],
+        "direccion_cliente"=>$_POST["direccion_cliente"],
+        "nombre_cliente"=>$_POST["nombre_cliente"],
+        "telefono_cliente"=>$_POST["telefono_cliente"],
+        "email_cliente"=>$_POST["email_cliente"]
     );
-
-    $respuesta = ModeloCliente::mdlRegCliente($data);
-
-    echo $respuesta;
+  
+      $respuesta = ModeloCliente::mdlRegCliente($data);
+      echo $respuesta;
   }
+  
 
   static public function ctrInfoCliente($id)
   {
@@ -45,7 +44,7 @@ class ControladorCliente
     return $respuesta;
   }
 
-  static function ctrEditcliente()
+  static function ctrEditCliente()
   {
     require "../modelo/clienteModelo.php";
 

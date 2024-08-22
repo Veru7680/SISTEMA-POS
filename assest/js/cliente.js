@@ -16,8 +16,6 @@ function MNuevoCliente(){
 function regCliente() {
     var formData = new FormData($("#FRegCliente")[0]);
 
-   
-
         $.ajax({
             type:"POST",
              url:"controlador/clienteControlador.php?ctrRegCliente",

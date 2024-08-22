@@ -10,32 +10,28 @@ class ModeloCliente{
 
     return $stmt->fetchAll();
 
-    $stmt->close();
-    $stmt->null;
+   
   }
 
-  static public function mdlRegCliente($data){
-      $rsocial = $data["rsocial"];
-      $nit = $data["nit"];
-      $direccion = $data["direccion"];
-      $ncliente = $data["ncliente"];
-      $telefono = $data["telefono"];
-      $email = $data["email"];
 
-    $stmt=Conexion::conectar()->prepare("insert into cliente(razon_social_cliente, nit_ci_cliente, direccion_cliente, nombre_cliente, telefono_cliente, email_cliente) 
-    values('$rsocial', '$nit', '$direccion', '$ncliente', '$telefono', 'email')");
-
+  static public function mdlRegCliente($data)
+  {
+    $razon_social_cliente=$data["razon_social_cliente"];
+    $nit_ci_cliente=$data["nit_ci_cliente"];
+    $direccion_cliente=$data["direccion_cliente"];
+    $nombre_cliente=$data["nombre_cliente"];
+    $telefono_cliente=$data["telefono_cliente"];
+    $email_cliente=$data["email_cliente"];  
+  
+    $stmt=Conexion::conectar()->prepare("insert into Cliente(razon_social_cliente, nit_ci_cliente, direccion_cliente, nombre_cliente, telefono_cliente, email_cliente) 
+    values ('$razon_social_cliente','$nit_ci_cliente','$direccion_cliente','$nombre_cliente','$telefono_cliente','$email_cliente')");
     if($stmt->execute()){
-      return "ok";
+        return "ok";
     }else{
-      return "error";
+        return "error";
     }
-
-    $stmt->close();
-    $stmt->null();
-  }
-
-
+}
+  
   static public function mdlInfoCliente($id){
     $stmt=Conexion::conectar()->prepare("select * from cliente where id_cliente=$id");
     $stmt->execute();
