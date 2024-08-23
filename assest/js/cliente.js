@@ -116,7 +116,7 @@ function MElitCliente(id){
   
     var obj={id:id}
 Swal.fire({
-    title: "estas seguro de eliminar cliente",
+    title: "ESTAS SEGURO DE ALIMIAR AL CLIENTE",
     icon: "warning",
     showDenyButton: true,
     showCancelButton: false,
