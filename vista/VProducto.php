@@ -46,7 +46,19 @@
                 <td><?php echo $value["unidad_medida"]; ?></td>
                 <td><?php echo $value["unidad_medida_sin"]; ?></td>
                 <td><?php echo $value["imagen_producto"]; ?></td>
-                <td><?php echo $value["disponible"]; ?></td>
+                <td><?php
+                    if( $value["disponible"]==1){
+                      ?>
+                      <span class="badge badge-succes">activo</span>
+
+                    <?php
+                    }else{
+                      ?>
+                      <span class="badge badge-danger">Inactivo</span>
+
+                    <?php
+                    }
+                    ?></td>
 
                 <td>
                     <div class="btn-group">

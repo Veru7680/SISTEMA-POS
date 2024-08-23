@@ -139,8 +139,8 @@
 
 
           <li class="nav ">
-    <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-sign-out-alt"></i>
+    <a href="salir" class="nav-link">
+        <i class="nav-icon fas fa-sign-out-alt"  ></i>
         <p>
             SALIR
             <i class="right fas fa-angle-left"></i>

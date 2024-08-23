@@ -53,10 +53,32 @@ $producto=ControladorProducto::ctrInfoProducto($id);
             <input type="text" class="form-control" name="imagen_producto" id="imagen_producto" value="<?php echo $producto["imagen_producto"]; ?>">
         </div>
 
-        <div class="form-group">
+        <!--<div class="form-group">
             <label for="disponible">Disponibilidad</label>
             <input type="text" class="form-control" name="disponible" id="disponible" value="<?php echo $producto["disponible"]; ?>">
-        </div>
+        </div>---->
+
+
+        <div class="form-group">
+<label for="" class="">DISPONIBILIDAD</label>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" name="disponible" id="disponibleActivo" 
+        <?php if($producto["disponible"] == "1"): ?>checked<?php endif; ?>value="1"> 
+        <label for="disponibleActivo" class="custom-control-label">ACTIVO</label>
+      </div>
+    </div>
+      
+    <div class="col-sm-6">
+      <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" name="disponible" id="disponibleInactivo"
+        <?php if($producto["disponible"] == "0"): ?>checked<?php endif; ?> value="0"> 
+        <label for="disponibleInactivo" class="custom-control-label">INACTIVO</label>
+      </div>
+    </div>
+  </div>
+</div>
 
         <!-- Campo oculto para el ID del producto -->
         <input type="hidden" name="id_producto" id="id_producto" value="<?php echo $producto['id_producto']; ?>">
