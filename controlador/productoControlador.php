@@ -61,9 +61,10 @@ class ControladorProducto
       "unidad_medida" => $_POST["unidad_medida"],
       "unidad_medida_sin" => $_POST["unidad_medida_sin"],
       "imagen_producto" => $_POST["imagen_producto"],
-      "disponible" => $_POST["disponible"]
+      "disponible" => $_POST["disponible"],
+      "id_producto" => $_POST["id_producto"] 
   );
-
+  
     ModeloProducto::mdlEditProducto($data);
     $respuesta = ModeloProducto::mdlEditProducto($data);
 

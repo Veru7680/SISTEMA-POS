@@ -1,18 +1,13 @@
 <?php
-require_once "../../controlador/usuarioProducto.php";
-require_once "../../modelo/ProductoModelo.php";
+require_once "../../controlador/productoControlador.php";
+require_once "../../modelo/productoModelo.php";
 
 $id=$_GET["id"];
-$producto=ControladorProducto::ctrProducto($id);
+$producto=ControladorProducto::ctrInfoProducto($id);
+
 ?>
 
 <form action="" id="FEditProducto">
-            <div class="modal-header bg-primary">
-              <h4 class="modal-title">registro nuevo PRODUCTO</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
             <form action="" method="post" id="FEditProducto">
     <div class="modal-header bg-primary">
         <h4 class="modal-title">Editar Producto</h4>
@@ -30,7 +25,7 @@ $producto=ControladorProducto::ctrProducto($id);
 
         <div class="form-group">
             <label for="cod_producto_sin">Código del Producto SIN</label>
-            <input type="text" class="form-control" name="cod_producto_sin" id="cod_producto_sin" value="<?php echo $producto["cod_producto_sin"]; ?>">
+            <input type="number" class="form-control" name="cod_producto_sin" id="cod_producto_sin" value="<?php echo $producto["cod_producto_sin"]; ?>">
         </div>
 
         <div class="form-group">
@@ -40,7 +35,7 @@ $producto=ControladorProducto::ctrProducto($id);
 
         <div class="form-group">
             <label for="precio_producto">Precio del Producto</label>
-            <input type="text" class="form-control" name="precio_producto" id="precio_producto" value="<?php echo $producto["precio_producto"]; ?>">
+            <input type="number" class="form-control" name="precio_producto" id="precio_producto" value="<?php echo $producto["precio_producto"]; ?>">
         </div>
 
         <div class="form-group">
@@ -50,7 +45,7 @@ $producto=ControladorProducto::ctrProducto($id);
 
         <div class="form-group">
             <label for="unidad_medida_sin">Unidad de Medida SIN</label>
-            <input type="text" class="form-control" name="unidad_medida_sin" id="unidad_medida_sin" value="<?php echo $producto["unidad_medida_sin"]; ?>">
+            <input type="number" class="form-control" name="unidad_medida_sin" id="unidad_medida_sin" value="<?php echo $producto["unidad_medida_sin"]; ?>">
         </div>
 
         <div class="form-group">
@@ -73,13 +68,6 @@ $producto=ControladorProducto::ctrProducto($id);
     </div>
 </form>
 
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">cancelar</button>
-              <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-
-            
-</form>
 
 <script>
 $(function () {
