@@ -106,10 +106,10 @@
             <ul class="nav nav-treeview">
             
               <li class="nav-item">
-                <a href="VUsuario" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>LISTA DE PRODUCTO</p>
-                </a>
+              <a href="VProducto" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>LISTA DE PRODUCTO</p>
+              </a>
               </li>
 
             </ul>
