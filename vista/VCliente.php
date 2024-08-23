@@ -32,23 +32,23 @@
             </thead>
             <tbody>
               <?php
-              $clientes = ControladorCliente::ctrInfoClientes();
-              foreach($clientes as $cliente) {
+              $cliente = ControladorCliente::ctrInfoClientes();
+              foreach($cliente as $value) {
                 ?>
                 <tr>
-                  <td><?php echo $cliente["id_cliente"]; ?></td>
-                  <td><?php echo $cliente["razon_social_cliente"]; ?></td>
-                  <td><?php echo $cliente["nit_ci_cliente"]; ?></td>
-                  <td><?php echo $cliente["direccion_cliente"]; ?></td>
-                  <td><?php echo $cliente["nombre_cliente"]; ?></td>
-                  <td><?php echo $cliente["telefono_cliente"]; ?></td>
-                  <td><?php echo $cliente["email_cliente"]; ?></td>
+                  <td><?php echo $value["id_cliente"]; ?></td>
+                  <td><?php echo $value["razon_social_cliente"]; ?></td>
+                  <td><?php echo $value["nit_ci_cliente"]; ?></td>
+                  <td><?php echo $value["direccion_cliente"]; ?></td>
+                  <td><?php echo $value["nombre_cliente"]; ?></td>
+                  <td><?php echo $value["telefono_cliente"]; ?></td>
+                  <td><?php echo $value["email_cliente"]; ?></td>
                   <td>
                     <div class="btn-group">
-                      <button class="btn btn-secondary" onclick="FEditCliente(<?php echo $cliente['id_cliente']; ?>)">
+                      <button class="btn btn-secondary" onclick="FEditCliente(<?php echo $value['id_cliente']; ?>)">
                         <i class="fas fa-edit"></i>
                       </button>
-                      <button class="btn btn-danger" onclick="MElitCliente(<?php echo $cliente['id_cliente']; ?>)">
+                      <button class="btn btn-danger" onclick="MElitCliente(<?php echo $value['id_cliente']; ?>)">
                         <i class="fas fa-trash"></i>
                       </button>
                     </div>

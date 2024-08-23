@@ -41,7 +41,7 @@ class ModeloUsuario{
     }
     static public function mdlInfoUsuario($id){
         $stmt=Conexion::conectar()->prepare("select * from usuario where id_usuario=$id");
-            $stmt->execute();
+        $stmt->execute();
 
             return $stmt->fetch();
     }

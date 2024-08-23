@@ -7,10 +7,7 @@ class ModeloCliente{
   static public function mdlInfoClientes(){
     $stmt=Conexion::conectar()->prepare("select * from cliente");
     $stmt->execute();
-
     return $stmt->fetchAll();
-
-   
   }
 
 
@@ -37,29 +34,35 @@ class ModeloCliente{
     $stmt->execute();
 
     return $stmt->fetch();
-
-    $stmt->close();
-    $stmt->null;
   }
   
-  static public function mdlEditcliente($data){
+  static public function mdlEditCliente($data) {
+    $razon_social_cliente = $data["razon_social_cliente"];
+    $nit_ci_cliente = $data["nit_ci_cliente"];
+    $direccion_cliente = $data["direccion_cliente"];
+    $nombre_cliente = $data["nombre_cliente"];
+    $telefono_cliente = $data["telefono_cliente"];
+    $email_cliente = $data["email_cliente"];
+    $id_cliente = $data["idCliente"];
 
-    $password=$data["password"];
-    $perfil=$data["perfil"];
-    $estado=$data["estado"];
-    $id=$data["id"];
+    $stmt = Conexion::conectar()->prepare("UPDATE Cliente 
+        SET razon_social_cliente = '$razon_social_cliente', 
+            nit_ci_cliente = '$nit_ci_cliente', 
+            direccion_cliente = '$direccion_cliente', 
+            nombre_cliente = '$nombre_cliente', 
+            telefono_cliente = '$telefono_cliente', 
+            email_cliente = '$email_cliente' 
+        WHERE id_cliente = $id_cliente");
 
-    $stmt=Conexion::conectar()->prepare("update cliente set password='$password', perfil='$perfil', estado='$estado' where id_cliente=$id");
+if($stmt->execute()){
+  return "ok";
+}
+else{
+  return "error";
+}
 
-    if($stmt->execute()){
-      return "ok";
-    }else{
-      return "error";
-    }
+}
 
-    $stmt->close();
-    $stmt->null();
-  }
   
   static public function mdlEliCliente($id){
     $stmt=Conexion::conectar()->prepare("delete from cliente where id_cliente=$id");

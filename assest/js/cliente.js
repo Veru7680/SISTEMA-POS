@@ -74,9 +74,6 @@ function editCliente(){
     //console.log(data)
     var formData =new FormData($("#FEditCliente")[0])
 
-    if(formData.get("password")==formData.get("vrPassword")){
-        
-        
         $.ajax({
             type:"POST",
              url:"controlador/clienteControlador.php?ctrEditCliente",
@@ -87,7 +84,7 @@ function editCliente(){
              success:function(data){
                 //console.log(data)
             
-                if(data="ok"){
+                if(data=="ok"){
                    
                     Swal.fire({
                         icon: "success",
@@ -113,7 +110,7 @@ function editCliente(){
 
     }
 
-}
+
 
 function MElitCliente(id){
   
