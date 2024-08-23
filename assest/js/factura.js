@@ -1,10 +1,10 @@
-function MNuevoUsuario(){
+function MNuevoFactura(){
     $("#modal-default").modal("show")
 
     var obj=""
     $.ajax({
     type:"POST",
-     url:"vista/usuario/FNuevoUsuario.php",
+     url:"vista/factura/FNuevoFactura.php",
      data:obj,
      success:function(data){
         $("#content-default").html(data)
@@ -13,14 +13,14 @@ function MNuevoUsuario(){
     })
 }
 
-function regUsuario() {
-    var formData = new FormData($("#FRegUsuario")[0]);
+function regFactura() {
+    var formData = new FormData($("#FRegFactura")[0]);
 
-    if(formData.get("password")==formData.get("vrPassword")){
+    
 
         $.ajax({
             type:"POST",
-             url:"controlador/usuarioControlador.php?ctrRegUsuario",
+             url:"controlador/facturaControlador.php?ctrRegFactura",
              data:formData,
              cache:false,
              contentType:false,
@@ -29,7 +29,7 @@ function regUsuario() {
                 //console.log(data)
                 if(data="ok"){
                     Swal.fire({
-                        title: "el usuario ha sido registrado",
+                        title: "la Factura ha sido registrado",
                         icon: "success",
                         showConfirmButton: false,
                         timer:1000
@@ -51,18 +51,18 @@ function regUsuario() {
         
             })
 
-    }
+    
    
 }
 
 
-function FEditUsuario(id){
+function FEditFactura(id){
     $("#modal-default").modal("show")
 
     var obj=""
     $.ajax({
     type:"POST",
-     url:"vista/usuario/FEditUsuario.php?id="+id,
+     url:"vista/factura/FEditFactura.php?id="+id,
      data:obj,
      success:function(data){
         $("#content-default").html(data)
@@ -72,16 +72,15 @@ function FEditUsuario(id){
 }
 
 
-function editUsuario(){
+function editFactura(){
     //console.log(data)
-    var formData =new FormData($("#FEditUsuario")[0])
+    var formData =new FormData($("#FEditFactura")[0])
 
-    if(formData.get("password")==formData.get("vrPassword")){
         
         
         $.ajax({
             type:"POST",
-             url:"controlador/usuarioControlador.php?ctrEditUsuario",
+             url:"controlador/facturaControlador.php?ctrEditFactura",
              data:formData,
              cache:false,
              contentType:false,
@@ -94,7 +93,7 @@ function editUsuario(){
                     Swal.fire({
                         icon: "success",
                         showConfirmButton: false,
-                        title: "el usuario ha sido ACTUALIZADO",
+                        title: "la Factura ha sido ACTUALIZADO",
                         timer:1000
                       })
                       setTimeout(function(){
@@ -113,7 +112,7 @@ function editUsuario(){
         
             })
 
-    }
+    
 
 }
 

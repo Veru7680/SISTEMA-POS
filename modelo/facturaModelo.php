@@ -15,11 +15,40 @@ class ModeloFactura{
   }
 
   static public function mdlRegFactura($data){
-    $loginFactura=$data["loginFactura"];
-    $password=$data["password"];
-    $perfil=$data["perfil"];
+    $codigo_factura = $data["codigo_factura"];
+    $id_cliente = $data["id_cliente"];
+    $detalle = $data["detalle"];
+    $neto = $data["neto"];
+    $descuento = $data["descuento"];
+    $total = $data["total"];
+    $fecha_emision = $data["fecha_emision"];
+    $cufd = $data["cufd"];
+    $cuf = $data["cuf"];
+    $xml = $data["xml"];
+    $id_punto_venta = $data["id_punto_venta"];
+    $id_usuario = $data["id_usuario"];
+    $usuario = $data["usuario"];
+    $leyenda = $data["leyenda"];
 
-    $stmt=Conexion::conectar()->prepare("insert into Factura(login_Factura, password, perfil) values('$loginFactura', '$password', '$perfil')");
+    $stmt = Conexion::conectar()->prepare("INSERT INTO Factura (codigo_factura, id_cliente, detalle, 
+      neto, descuento, total, fecha_emision, cufd, cuf, xml, id_punto_venta, id_usuario, usuario, leyenda
+  ) VALUES (
+      '$codigo_factura', 
+      '$id_cliente', 
+      '$detalle', 
+      '$neto', 
+      '$descuento', 
+      '$total', 
+      '$fecha_emision', 
+      '$cufd', 
+      '$cuf', 
+      '$xml', 
+      '$id_punto_venta', 
+      '$id_usuario', 
+      '$usuario', 
+      '$leyenda'
+  )");
+  
 
     if($stmt->execute()){
       return "ok";
@@ -31,18 +60,7 @@ class ModeloFactura{
     $stmt->null();
   }
 
-  static public function mdlActualizarAcceso($fechaHora, $id){
-    $stmt=Conexion::conectar()->prepare("update Factura set ultimo_login='$fechaHora' where id_Factura='$id'");
-
-    if($stmt->execute()){
-      return "ok";
-    }else{
-      return "error";
-    }
-
-    $stmt->close();
-    $stmt->null();
-  }
+  
 
   static public function mdlInfoFactura($id){
     $stmt=Conexion::conectar()->prepare("select * from Factura where id_Factura=$id");
@@ -56,12 +74,39 @@ class ModeloFactura{
   
   static public function mdlEditFactura($data){
 
-    $password=$data["password"];
-    $perfil=$data["perfil"];
-    $estado=$data["estado"];
-    $id=$data["id"];
+    $codigo_factura = $data["codigo_factura"];
+    $id_cliente = $data["id_cliente"];
+    $detalle = $data["detalle"];
+    $neto = $data["neto"];
+    $descuento = $data["descuento"];
+    $total = $data["total"];
+    $fecha_emision = $data["fecha_emision"];
+    $cufd = $data["cufd"];
+    $cuf = $data["cuf"];
+    $xml = $data["xml"];
+    $id_punto_venta = $data["id_punto_venta"];
+    $id_usuario = $data["id_usuario"];
+    $usuario = $data["usuario"];
+    $leyenda = $data["leyenda"];
+    $id_factura = $data["id_factura"];
 
-    $stmt=Conexion::conectar()->prepare("update Factura set password='$password', perfil='$perfil', estado='$estado' where id_Factura=$id");
+    $stmt = Conexion::conectar()->prepare("UPDATE factura 
+    SET codigo_factura = '$codigo_factura', 
+        id_cliente = $id_cliente, 
+        detalle = '$detalle', 
+        neto = $neto, 
+        descuento = $descuento, 
+        total = $total, 
+        fecha_emision = '$fecha_emision', 
+        cufd = '$cufd', 
+        cuf = '$cuf', 
+        xml = '$xml', 
+        id_punto_venta = $id_punto_venta, 
+        id_usuario = $id_usuario, 
+        usuario = '$usuario', 
+        leyenda = '$leyenda' 
+    WHERE id_factura = $id_factura");
+
 
     if($stmt->execute()){
       return "ok";
@@ -74,7 +119,7 @@ class ModeloFactura{
   }
   
   static public function mdlEliFactura($id){
-    $stmt=Conexion::conectar()->prepare("delete from Factura where id_Factura=$id");
+    $stmt=Conexion::conectar()->prepare("delete from factura where id_factura=$id");
 
     if($stmt->execute()){
       return "ok";
