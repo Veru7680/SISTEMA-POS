@@ -33,20 +33,8 @@ class ModeloFactura{
     $stmt = Conexion::conectar()->prepare("INSERT INTO Factura (codigo_factura, id_cliente, detalle, 
       neto, descuento, total, fecha_emision, cufd, cuf, xml, id_punto_venta, id_usuario, usuario, leyenda
   ) VALUES (
-      '$codigo_factura', 
-      '$id_cliente', 
-      '$detalle', 
-      '$neto', 
-      '$descuento', 
-      '$total', 
-      '$fecha_emision', 
-      '$cufd', 
-      '$cuf', 
-      '$xml', 
-      '$id_punto_venta', 
-      '$id_usuario', 
-      '$usuario', 
-      '$leyenda'
+      '$codigo_factura', '$id_cliente', '$detalle', '$neto', '$descuento', '$total', '$fecha_emision', 
+      '$cufd', '$cuf','$xml', '$id_punto_venta', '$id_usuario', '$usuario', '$leyenda'
   )");
   
 
