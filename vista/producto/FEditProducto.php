@@ -53,12 +53,6 @@ $producto=ControladorProducto::ctrInfoProducto($id);
             <input type="text" class="form-control" name="imagen_producto" id="imagen_producto" value="<?php echo $producto["imagen_producto"]; ?>">
         </div>
 
-        <!--<div class="form-group">
-            <label for="disponible">Disponibilidad</label>
-            <input type="text" class="form-control" name="disponible" id="disponible" value="<?php echo $producto["disponible"]; ?>">
-        </div>---->
-
-
         <div class="form-group">
 <label for="" class="">DISPONIBILIDAD</label>
   <div class="row">
@@ -100,18 +94,32 @@ $(function () {
   });
   $('#FEditProducto').validate({
     rules: {
-      login: {
+      cod_producto: {
         required: true,
         minlength: 3
       },
-      password: {
+      cod_producto_sin: {
+        required: true,
+        minlength: 3,
+        number:true
+      },
+      nombre_producto: {
         required: true,
         minlength: 3
       },
-      vrPassword: {
+      precio_producto: {
         required: true,
-        minlength: 3
+        minlength: 1
       },
+      unidad_medida: {
+        required: true,
+        minlength: 1
+      },
+      unidad_medida_sin: {
+        required: true,
+        minlength: 1
+      },
+     
     },
   
     errorElement: 'span',
