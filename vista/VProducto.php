@@ -18,43 +18,43 @@
           <table id="example1" class="table table-bordered table-striped">
         <thead>
               <tr>
-                    <th>#</th>
+                     <!---<th>#</th>--->
                     <th>C.Producto</th>
                     <th>C.Producto SIN</th>
-                    <th>N.Producto</th>
-                    <th>P.Producto</th>
-                    <th>U.Medida</th>
-                    <th>U.Medida SIN</th>
-                    <th>I.Producto</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                   <!---<th>U.Medida</th>--->
+                   <!--- <th>U.Medida SIN</th>--->
+                    <th>Imagen</th>
                     <th>Disponibilidad</th>
                     <td>
                       <button class="btn btn-primary" onclick="MNuevoProducto()">Nuevo</button>
                     </td>
               </tr>
-        </thead>
+        </thead>  <!---N--->
             <tbody>
               <?php
               $producto = ControladorProducto::ctrInfoProductos();
               foreach($producto as $value) {
                 ?>
                 <tr>
-                <td><?php echo $value["id_producto"]; ?></td>
+                 <!---<td><?php echo $value["id_producto"]; ?></td>--->
                 <td><?php echo $value["cod_producto"]; ?></td>
                 <td><?php echo $value["cod_producto_sin"]; ?></td>
                 <td><?php echo $value["nombre_producto"]; ?></td>
                 <td><?php echo $value["precio_producto"]; ?></td>
-                <td><?php echo $value["unidad_medida"]; ?></td>
-                <td><?php echo $value["unidad_medida_sin"]; ?></td>
+                <!--- <td><?php echo $value["unidad_medida"]; ?></td>--->
+                <!--- <td><?php echo $value["unidad_medida_sin"]; ?></td>--->
                 <td><?php echo $value["imagen_producto"]; ?></td>
                 <td><?php
                     if( $value["disponible"]==1){
                       ?>
-                      <span class="badge badge-succes">activo</span>
+                      <span class="badge badge-succes">disponible</span>
 
                     <?php
                     }else{
                       ?>
-                      <span class="badge badge-danger">Inactivo</span>
+                      <span class="badge badge-danger">NO disponible</span>
 
                     <?php
                     }

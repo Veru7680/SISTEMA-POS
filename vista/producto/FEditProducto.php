@@ -66,7 +66,7 @@ $producto=ControladorProducto::ctrInfoProducto($id);
       <div class="custom-control custom-radio">
         <input type="radio" class="custom-control-input" name="disponible" id="disponibleActivo" 
         <?php if($producto["disponible"] == "1"): ?>checked<?php endif; ?>value="1"> 
-        <label for="disponibleActivo" class="custom-control-label">ACTIVO</label>
+        <label for="disponibleActivo" class="custom-control-label">DISPONIBLE</label>
       </div>
     </div>
       
@@ -74,7 +74,7 @@ $producto=ControladorProducto::ctrInfoProducto($id);
       <div class="custom-control custom-radio">
         <input type="radio" class="custom-control-input" name="disponible" id="disponibleInactivo"
         <?php if($producto["disponible"] == "0"): ?>checked<?php endif; ?> value="0"> 
-        <label for="disponibleInactivo" class="custom-control-label">INACTIVO</label>
+        <label for="disponibleInactivo" class="custom-control-label">NO DISPONIBLE</label>
       </div>
     </div>
   </div>
