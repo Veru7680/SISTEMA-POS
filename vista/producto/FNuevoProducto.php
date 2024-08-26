@@ -15,7 +15,7 @@
             <input type="number" class="form-control" name="cod_producto_sin" id="cod_producto_sin" min="0">
         </div>
         <div class="form-group">
-            <label for="nombre_producto">Nombre del Producto</label>
+            <label for="nombre_producto">Descripcion del Producto</label>
             <input type="text" class="form-control" name="nombre_producto" id="nombre_producto" maxlength="100">
         </div>
         <div class="form-group">
@@ -59,18 +59,32 @@ $(function () {
   });
   $('#FRegProducto').validate({
     rules: {
-      login: {
+      cod_producto: {
         required: true,
         minlength: 3
       },
-      password: {
+      cod_producto_sin: {
+        required: true,
+        minlength: 3,
+        number:true
+      },
+      nombre_producto: {
         required: true,
         minlength: 3
       },
-      vrPassword: {
+      precio_producto: {
         required: true,
-        minlength: 3
+        minlength: 1
       },
+      unidad_medida: {
+        required: true,
+        minlength: 1
+      },
+      unidad_medida_sin: {
+        required: true,
+        minlength: 1
+      },
+     
     },
   
     errorElement: 'span',

@@ -62,6 +62,9 @@
 
                 <td>
                     <div class="btn-group">
+                    <button class="btn btn-info" onclick="VerProducto(<?php echo $value['id_producto']; ?>)">
+                        <i class="fas fa-eye"></i>
+                      </button>
                       <button class="btn btn-secondary" onclick="FEditProducto(<?php echo $value['id_producto']; ?>)">
                         <i class="fas fa-edit"></i>
                       </button>
