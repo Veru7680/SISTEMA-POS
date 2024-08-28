@@ -59,35 +59,35 @@ move_uploaded_file($imgTmpNombre, $destino);
 
   static function ctrEditProducto()
   {
-    require "../modelo/productoModelo.php";
-    $imagen = $_FILES["imagen_producto"];
-    if($imagen["name"]==""){
-      $imagen = $_POST["imgActual"];
-
-    }else{
-      $imgNombre = $imagen["name"];
-      $imgTmpNombre = $imagen["tmp_name"];
-      //$destino = "../assets/dist/img/productos/" . $imgNombre;
-    move_uploaded_file($imgTmpNombre,"../assest/dist/img/productos/" . $imgNombre);
-    }
-
-    $data = array(
-     //"cod_producto" => $_POST["cod_producto"],
-      "cod_producto_sin" => $_POST["cod_producto_sin"],
-      "nombre_producto" => $_POST["nombre_producto"],
-      "precio_producto" => $_POST["precio_producto"],
-      "unidad_medida" => $_POST["unidad_medida"],
-      "unidad_medida_sin" => $_POST["unidad_medida_sin"],
-      "imagen_producto" => $_POST["imagen_producto"],
-      "disponible" => $_POST["disponible"],
-      "id_producto" => $_POST["id_producto"] 
-  );
+      require "../modelo/productoModelo.php";
+      
+      $imagen = $_FILES["imgProducto"];
+      $imgNombre = $_POST["imgActual"]; // Por defecto usa la imagen actual
+      
+      if ($imagen["name"] != "") { // Si se subió una nueva imagen
+          $imgNombre = $imagen["name"];
+          $imgTmpNombre = $imagen["tmp_name"];
+          move_uploaded_file($imgTmpNombre, "../assets/dist/img/productos/" . $imgNombre);
+      }
   
-    ModeloProducto::mdlEditProducto($data);
-    $respuesta = ModeloProducto::mdlEditProducto($data);
+      $data = array(
+        "cod_producto" => $_POST["cod_producto"],
+          "cod_producto_sin" => $_POST["cod_producto_sin"],
+          "nombre_producto" => $_POST["nombre_producto"],
+          "precio_producto" => $_POST["precio_producto"],
+          "unidad_medida" => $_POST["unidad_medida"],
+          "unidad_medida_sin" => $_POST["unidad_medida_sin"],
+          "imagen_producto" => $imgNombre,
+          "disponible" => $_POST["disponible"],
+          "id_producto" => $_POST["id_producto"]
+      );
 
-    echo $respuesta;
+      
+  
+      $respuesta = ModeloProducto::mdlEditProducto($data);
+      echo $respuesta;
   }
+  
 
   static function ctrEliProducto()
   {

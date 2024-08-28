@@ -53,42 +53,43 @@ VALUES ('$codProducto', '$codProductoSin', '$nombreProducto', '$precioProducto',
   
   static public function mdlEditProducto($data){
 
-      $cod_producto = $data["cod_producto"];
-      $od_producto_sin = $data["cod_producto_sin"];
-      $nombre_producto = $data["nombre_producto"];
-      $precio_producto = $data["precio_producto"];
-      $unidad_medida = $data["unidad_medida"];
-      $unidad_medida_sin = $data["unidad_medida_sin"];
-      $imagenProducto = $data["imagen_producto"];
-      $disponible = $data["disponible"];
-      $id_producto = $data["id_producto"];
+    $cod_producto = $data["cod_producto"]; // Verifica que este campo exista en tu array $data
+    $cod_producto_sin = $data["cod_producto_sin"];
+    $nombre_producto = $data["nombre_producto"];
+    $precio_producto = $data["precio_producto"];
+    $unidad_medida = $data["unidad_medida"];
+    $unidad_medida_sin = $data["unidad_medida_sin"];
+    $imagenProducto = $data["imagen_producto"];
+    $disponible = $data["disponible"];
+    $id_producto = $data["id_producto"];
 
+    $stmt = Conexion::conectar()->prepare("
+    UPDATE producto 
+    SET 
+        cod_producto = '$cod_producto', 
+        cod_producto_sin = '$cod_producto_sin', 
+        nombre_producto = '$nombre_producto', 
+        precio_producto = '$precio_producto', 
+        unidad_medida = '$unidad_medida', 
+        unidad_medida_sin = '$unidad_medida_sin', 
+        imagen_producto = '$imagenProducto', 
+        disponible = '$disponible' 
+    WHERE 
+        id_producto = $id_producto
+    ");
 
-      $stmt = Conexion::conectar()->prepare("
-      UPDATE producto 
-      SET 
-          cod_producto = ' $cod_producto', 
-          cod_producto_sin = ' $od_producto_sin', 
-          nombre_producto = '$nombre_producto', 
-          precio_producto = ' $precio_producto ', 
-          unidad_medida = '$unidad_medida', 
-          unidad_medida_sin = '$unidad_medida_sin', 
-          imagen_producto = ' $imagenProducto', 
-          disponible = '$disponible' 
-      WHERE 
-          id_producto =  $id_producto
-  ");
-  
+ 
 
     if($stmt->execute()){
-      return "ok";
+        return "ok";
     }else{
-      return "error";
+        return "error";
     }
 
     $stmt->close();
-    $stmt->null();
-  }
+    $stmt = null;
+}
+
   
   static public function mdlEliProducto($id){
     $stmt=Conexion::conectar()->prepare("delete from producto where id_producto=$id");

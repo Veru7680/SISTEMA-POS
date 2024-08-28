@@ -24,7 +24,6 @@ function previsualizar() {
         reader.onload = function (e) {
             document.getElementById('img-preview').src = e.target.result;
         }
-
         reader.readAsDataURL(file);
     }
 }

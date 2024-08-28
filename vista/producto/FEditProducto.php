@@ -20,8 +20,9 @@ $producto=ControladorProducto::ctrInfoProducto($id);
 
         <div class="form-group">
             <label for="cod_producto">Código del Producto</label>
-            <input type="text" class="form-control" name="cod_producto" id="cod_producto" value="<?php echo $producto["cod_producto"]; ?>">
+            <input type="text" class="form-control" name="cod_producto" id="cod_producto" value="<?php echo $producto['cod_producto']; ?>" readonly>
         </div>
+
 
         <div class="form-group">
             <label for="cod_producto_sin">Código del Producto SIN</label>
@@ -49,9 +50,22 @@ $producto=ControladorProducto::ctrInfoProducto($id);
         </div>
 
         <div class="form-group">
-            <label for="imagen_producto">Imagen del Producto</label>
-            <input type="text" class="form-control" name="imagen_producto" id="imagen_producto" value="<?php echo $producto["imagen_producto"]; ?>">
+    <label for="imgProducto">Imagen <span class="text-muted">(Peso máximo 10MB JPG, PNG)</span></label>
+    <div class="input-group">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="imgProducto" name="imgProducto" onchange="previsualizar()">
+            <label class="custom-file-label" for="imgProducto">Elegir archivo</label>
         </div>
+        <div class="input-group-append">
+            <span class="input-group-text">Subir</span>
+        </div>
+    </div>
+    <!-- Previsualización de la imagen -->
+    <div class="mt-3">
+        <img id="img-preview" src="<?php echo isset($producto['imagen_producto']) && $producto['imagen_producto'] ? 'assest/dist/img/productos/' . $producto['imagen_producto'] : 'assest/dist/img/productos/product_default.png'; ?>" alt="Vista previa de la imagen" style="max-width: 100px; max-height: 100px;" class="img-thumbnail">
+    </div>
+</div>
+
 
         <div class="form-group">
 <label for="" class="">DISPONIBILIDAD</label>
