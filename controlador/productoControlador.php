@@ -26,6 +26,14 @@ class ControladorProducto
   {
     require "../modelo/productoModelo.php";
 
+    $imagen = $_FILES["imgProducto"];
+$imgNombre = $imagen["name"];
+$imgTmpNombre = $imagen["tmp_name"];
+$destino = "../assest/dist/img/productos/" . $imgNombre;
+
+move_uploaded_file($imgTmpNombre, $destino);
+//move_uploaded_file($imgTmp,"../assets/dist/img/productos/".$imgNombre);
+
 
     $data = array(
       "cod_producto" => $_POST["cod_producto"],
@@ -34,7 +42,7 @@ class ControladorProducto
       "precio_producto" => $_POST["precio_producto"],
       "unidad_medida" => $_POST["unidad_medida"],
       "unidad_medida_sin" => $_POST["unidad_medida_sin"],
-      "imagen_producto" => $_POST["imagen_producto"],
+      "imagen_producto" => $imgNombre,
       "disponible" => $_POST["disponible"]
   );
 
@@ -52,9 +60,19 @@ class ControladorProducto
   static function ctrEditProducto()
   {
     require "../modelo/productoModelo.php";
+    $imagen = $_FILES["imagen_producto"];
+    if($imagen["name"]==""){
+      $imagen = $_POST["imgActual"];
+
+    }else{
+      $imgNombre = $imagen["name"];
+      $imgTmpNombre = $imagen["tmp_name"];
+      //$destino = "../assets/dist/img/productos/" . $imgNombre;
+    move_uploaded_file($imgTmpNombre,"../assest/dist/img/productos/" . $imgNombre);
+    }
 
     $data = array(
-      "cod_producto" => $_POST["cod_producto"],
+     //"cod_producto" => $_POST["cod_producto"],
       "cod_producto_sin" => $_POST["cod_producto_sin"],
       "nombre_producto" => $_POST["nombre_producto"],
       "precio_producto" => $_POST["precio_producto"],

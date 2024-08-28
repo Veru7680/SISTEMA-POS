@@ -53,7 +53,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link ">
+            <a href="" class="nav-link ">
               <i class="nav-icon fas fa-user"></i>
               <p>
               USUARIOS
@@ -76,7 +76,7 @@
 
           <li class="nav-item menu-open">
             <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="fas fa-users nav-icon"></i>
               <p>
               CLIENTE
                 <i class="right fas fa-angle-left"></i>
@@ -97,7 +97,7 @@
 
           <li class="nav-item menu-open">
             <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="fas fa-cube nav-icon"></i>
               <p>
               PRODUCTO
                 <i class="right fas fa-angle-left"></i>
@@ -114,7 +114,7 @@
 
               <li class="nav-item">
               <a href=" SinCatalogos" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
+              <i class="fas fa-book nav-icon"></i>
               <p>SINCRONIZACION CATALOGO</p>
               </a>
               </li>
@@ -126,7 +126,7 @@
 
           <li class="nav-item menu-open">
             <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="fas fa-shopping-cart nav-icon"></i>
               <p>
               VENTAS
                 <i class="right fas fa-angle-left"></i>
@@ -136,7 +136,7 @@
             
               <li class="nav-item">
                 <a href="VFactura" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-file-invoice nav-icon"></i>
                   <p>EMITIR FACTURA</p>
                 </a>
               </li>
@@ -145,15 +145,12 @@
           </li>
 
 
-          <li class="nav ">
-    <a href="salir" class="nav-link">
-        <i class="nav-icon fas fa-sign-out-alt"  ></i>
-        <p>
-            SALIR
-            <i class="right fas fa-angle-left"></i>
-        </p>
-    </a>
-</li>
+          <li class="nav-item">
+            <a href="salir" class="nav-link">
+            <i class="fas fa-power-off nav-icon"></i>
+            <p>SALIR</p>
+            </a>
+          </li>
 
 
 

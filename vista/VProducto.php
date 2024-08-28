@@ -45,7 +45,23 @@
                 <td><?php echo $value["precio_producto"]; ?></td>
                 <!--- <td><?php echo $value["unidad_medida"]; ?></td>--->
                 <!--- <td><?php echo $value["unidad_medida_sin"]; ?></td>--->
-                <td><?php echo $value["imagen_producto"]; ?></td>
+                <td>
+                <?php
+                   if($value["imagen_producto"]==""){
+                 ?>
+                 
+                 <img src="assest/dist/img/product_default.png" alt="" width="50" class="img-thumbail">
+                 
+
+                <?php
+                }else{
+                ?>
+                 <img src="assest/dist/img/productos/<?php echo $value["imagen_producto"];?>" alt="" width="50" class="img-thumbail">
+                <?php
+                }
+                ?>
+                
+                </td>
                 <td><?php
                     if( $value["disponible"]==1){
                       ?>

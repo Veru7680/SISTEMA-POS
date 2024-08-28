@@ -13,6 +13,23 @@ function MNuevoProducto(){
     })
 }
 
+
+function previsualizar() {
+    const input = document.getElementById('imgProducto');
+    const file = input.files[0];
+    
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById('img-preview').src = e.target.result;
+        }
+
+        reader.readAsDataURL(file);
+    }
+}
+
+
 function regProducto() {
     var formData = new FormData($("#FRegProducto")[0]);
                                             

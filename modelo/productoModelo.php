@@ -23,6 +23,7 @@ $precioProducto = $data["precio_producto"];
 $unidadMedida = $data["unidad_medida"];
 $unidadMedidaSin = $data["unidad_medida_sin"];
 $imagenProducto = $data["imagen_producto"];
+
 $disponible = $data["disponible"];
 
 $stmt = Conexion::conectar()->prepare("INSERT INTO producto (cod_producto, cod_producto_sin, nombre_producto, precio_producto, unidad_medida, unidad_medida_sin, imagen_producto, disponible) 
@@ -58,7 +59,7 @@ VALUES ('$codProducto', '$codProductoSin', '$nombreProducto', '$precioProducto',
       $precio_producto = $data["precio_producto"];
       $unidad_medida = $data["unidad_medida"];
       $unidad_medida_sin = $data["unidad_medida_sin"];
-      $imagen_producto = $data["imagen_producto"];
+      $imagenProducto = $data["imagen_producto"];
       $disponible = $data["disponible"];
       $id_producto = $data["id_producto"];
 
@@ -72,7 +73,7 @@ VALUES ('$codProducto', '$codProductoSin', '$nombreProducto', '$precioProducto',
           precio_producto = ' $precio_producto ', 
           unidad_medida = '$unidad_medida', 
           unidad_medida_sin = '$unidad_medida_sin', 
-          imagen_producto = '$imagen_producto', 
+          imagen_producto = ' $imagenProducto', 
           disponible = '$disponible' 
       WHERE 
           id_producto =  $id_producto
