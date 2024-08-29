@@ -57,9 +57,7 @@ $producto=ControladorProducto::ctrInfoProducto($id);
      
     </div>
     <div class="col-sm-6">
-
     </table>
-
     <!-- Tabla de Imagen del Producto -->
     <br>
     <br>
@@ -67,10 +65,7 @@ $producto=ControladorProducto::ctrInfoProducto($id);
     <br>
     <br>
     <br>
-
     <tr>
-    
-
         <td style="text-align: right;">
             <?php if (!empty($producto['imagen_producto'])): ?>
                 <img src="<?php echo 'assest/dist/img/productos/' . $producto['imagen_producto']; ?>" alt="Imagen del Producto" style="max-width: 200px; max-height: 200px;">
