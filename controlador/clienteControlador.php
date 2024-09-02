@@ -4,6 +4,7 @@ $ruta = parse_url($_SERVER["REQUEST_URI"]);
 if (isset($ruta["query"])) {
   if (
     $ruta["query"] == "ctrRegCliente" ||
+    $ruta["query"] == "ctrBusCliente" ||
     $ruta["query"] == "ctrEditCliente" ||
     $ruta["query"] == "ctrEliCliente"
   ) {
@@ -15,14 +16,12 @@ if (isset($ruta["query"])) {
 
 class ControladorCliente
 {
-  static public function ctrInfoClientes()
-  {
+  static public function ctrInfoClientes(){
     $respuesta = ModeloCliente::mdlInfoClientes();
     return $respuesta;
   }
 
-  static public function ctrRegCliente()
-  {
+  static public function ctrRegCliente(){
       require "../modelo/clienteModelo.php";
       $data = array(
         "razon_social_cliente"=>$_POST["razon_social_cliente"],
@@ -38,14 +37,12 @@ class ControladorCliente
   }
   
 
-  static public function ctrInfoCliente($id)
-  {
+  static public function ctrInfoCliente($id){
     $respuesta = ModeloCliente::mdlInfoCliente($id);
     return $respuesta;
   }
 
-  static function ctrEditCliente()
-  {
+  static function ctrEditCliente(){
       require "../modelo/clienteModelo.php";
   
       // Recoger los datos del formulario POST
@@ -68,13 +65,21 @@ class ControladorCliente
       echo $respuesta;
   }
   
-
-  static function ctrEliCliente()
-  {
+  static function ctrEliCliente(){
     require "../modelo/ClienteModelo.php";
     $id = $_POST["id"];
 
     $respuesta = ModeloCliente::mdlEliCliente($id);
     echo $respuesta;
   }
+
+  static function ctrBusCliente(){
+    require "../modelo/ClienteModelo.php";
+
+   $nitCliente=$_POST["nitCliente"];
+   $respuesta = ModeloCliente::mdlBusCliente($nitCliente);
+   echo json_encode($respuesta);
+  }
+
+
 }

@@ -5,6 +5,7 @@ if (isset($ruta["query"])) {
   if (
     $ruta["query"] == "ctrRegFactura" ||
     $ruta["query"] == "ctrEditFactura" ||
+    $ruta["query"] == "ctrNumFactura" ||
     $ruta["query"] == "ctrEliFactura"
   ) {
     $metodo = $ruta["query"];
@@ -22,8 +23,7 @@ class ControladorFactura
     return $respuesta;
   }
 
-  static public function ctrRegFactura()
-  {
+  static public function ctrRegFactura(){
     require "../modelo/FacturaModelo.php";
 
     $data = array(
@@ -40,22 +40,17 @@ class ControladorFactura
       "id_punto_venta" => $_POST["id_punto_venta"],
       "id_usuario" => $_POST["id_usuario"],
       "usuario" => $_POST["usuario"],
-      "leyenda" => $_POST["leyenda"]
-  );
-  
-    $respuesta = ModeloFactura::mdlRegFactura($data);
-
+      "leyenda" => $_POST["leyenda"]);
+  $respuesta = ModeloFactura::mdlRegFactura($data);
     echo $respuesta;
   }
 
-  static public function ctrInfoFactura($id)
-  {
+  static public function ctrInfoFactura($id) {
     $respuesta = ModeloFactura::mdlInfoFactura($id);
     return $respuesta;
   }
 
-  static function ctrEditFactura()
-  {
+  static function ctrEditFactura(){
     require "../modelo/FacturaModelo.php";
 
     $data = array(
@@ -77,19 +72,26 @@ class ControladorFactura
 
 
   );
-
     ModeloFactura::mdlEditFactura($data);
     $respuesta = ModeloFactura::mdlEditFactura($data);
-
     echo $respuesta;
   }
 
-  static function ctrEliFactura()
-  {
+  static function ctrEliFactura(){
     require "../modelo/FacturaModelo.php";
     $id = $_POST["id"];
 
     $respuesta = ModeloFactura::mdlEliFactura($id);
     echo $respuesta;
+  }
+
+  static function ctrNumFactura(){
+    require "../modelo/FacturaModelo.php";
+   $respuesta=ModeloFactura::mdlNumFactura();
+   if($respuesta["max(id_factura)"]==null){
+    echo "1"; }
+    else{
+      echo $respuesta["max(id_factura)"]+1 ;
+    }
   }
 }
