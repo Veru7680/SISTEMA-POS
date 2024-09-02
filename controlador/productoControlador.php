@@ -5,6 +5,7 @@ if (isset($ruta["query"])) {
   if (
     $ruta["query"] == "ctrRegProducto" ||
     $ruta["query"] == "ctrEditProducto" ||
+    $ruta["query"] == "ctrBusProducto" ||
     $ruta["query"] == "ctrEliProducto"
   ) {
     $metodo = $ruta["query"];
@@ -16,17 +17,14 @@ if (isset($ruta["query"])) {
 class ControladorProducto
 {
 
-  static public function ctrInfoproductos()
-  {
+  static public function ctrInfoproductos(){
     $respuesta = ModeloProducto::mdlInfoProductos();
     return $respuesta;
   }
 
-  static public function ctrRegProducto()
-  {
+  static public function ctrRegProducto(){
     require "../modelo/productoModelo.php";
-
-    $imagen = $_FILES["imgProducto"];
+$imagen = $_FILES["imgProducto"];
 $imgNombre = $imagen["name"];
 $imgTmpNombre = $imagen["tmp_name"];
 $destino = "../assest/dist/img/productos/" . $imgNombre;
@@ -51,14 +49,12 @@ move_uploaded_file($imgTmpNombre, $destino);
     echo $respuesta;
   }
 
-  static public function ctrInfoProducto($id)
-  {
+  static public function ctrInfoProducto($id){
     $respuesta = ModeloProducto::mdlInfoProducto($id);
     return $respuesta;
   }
 
-  static function ctrEditProducto()
-  {
+  static function ctrEditProducto(){
       require "../modelo/productoModelo.php";
       
       $imagen = $_FILES["imgProducto"];
@@ -89,12 +85,19 @@ move_uploaded_file($imgTmpNombre, $destino);
   }
   
 
-  static function ctrEliProducto()
-  {
+  static function ctrEliProducto(){
     require "../modelo/productoModelo.php";
     $id = $_POST["id"];
 
     $respuesta = Modeloproducto::mdlEliProducto($id);
     echo $respuesta;
   }
+
+  static function ctrBusProducto(){
+    require "../modelo/productoModelo.php";
+    $codProducto=$_POST["codProducto"];
+    $respuesta = ModeloProducto::mdlBusProducto($codProducto);
+    echo json_encode($respuesta);
+  }
+
 }
