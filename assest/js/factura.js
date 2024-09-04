@@ -348,6 +348,8 @@ arregloCarrito.forEach((detalle)=>{
                fila.appendChild(tdEliminar)
                    listaDetalle.appendChild(fila)
 })
+
+calcularTotal()
 }
 
 
@@ -367,4 +369,14 @@ function eliminarCarrito(codProducto) {
     dibujarTablaCarrito();
 }
 
+function calcularTotal(){
+    let totalCarrito=0;
+    for (var i=0 ; i<arregloCarrito.length;i ++){
+        totalCarrito=totalCarrito+parseFloat(arregloCarrito[i].subtotal)
+    }
+    //console.log(totalCarrito)
+    document.getElementById("subTotal").value=totalCarrito
+    let descAdicional=parseFloat(document.getElementById("descAdicional").value)
+    document.getElementById("totApagar").value=totalCarrito-descAdicional
+}
 
