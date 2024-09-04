@@ -245,6 +245,9 @@ function busProducto(){
           document.getElementById("conceptoPro").value=data["nombre_producto"];
           document.getElementById("uniMedida").value=data["unidad_medida"];
           document.getElementById("preUnitario").value=data["precio_producto"];
+
+          document.getElementById("uniMedidaSin").value=data["unidad_medida_sin"];
+          document.getElementById("codproducto_sin").value=data["cod_producto_sin"];
         }
     })
 
@@ -259,3 +262,109 @@ function calcularPreProd(){
    
     document.getElementById("preTotal").value=preProducto*cantPro
 }
+
+/*--
+generar Carrito   video 15 17:51
+---*/
+
+var arregloCarrito=[]
+
+var listaDetalle=document.getElementById("listaDetalle")
+
+function agregarCarrito(){
+let actEconomica=document.getElementById("actEconomica").value
+let codProducto=document.getElementById("cod_producto").value
+let codproducto_sin=parseInt(document.getElementById("codproducto_sin").value)
+let conceptoPro=document.getElementById("conceptoPro").value
+let cantProducto=parseInt(document.getElementById("cantidadProducto").value)
+let uniMedida=document.getElementById("uniMedida").value  
+let uniMedidaSin=parseInt(document.getElementById("uniMedidaSin").value)
+
+let preUnitario=parseFloat(document.getElementById("preUnitario").value)
+let descProducto=parseFloat(document.getElementById("descProducto").value)  
+let preTotal=parseFloat(document.getElementById("preTotal").value)
+
+/*console.log("actEconomica:", actEconomica, 
+    "codProducto:", codProducto, 
+    "codproducto_sin:", codproducto_sin, 
+    "conceptoPro:", conceptoPro, 
+    "cantProducto:", cantProducto, 
+    "uniMedida:", uniMedida, 
+    "uniMedidaSin:", uniMedidaSin, 
+    "preUnitario:", preUnitario, 
+    "descProducto:", descProducto, 
+    "preTotal:", preTotal);*/
+
+let objDetalle={
+actividadEconomica:actEconomica,
+codigoProductoSin:codproducto_sin,
+codigoProducto:codProducto,
+descripcion:conceptoPro,
+cantidad:cantProducto,
+unidadMedida:uniMedidaSin,
+precioUnitario:preUnitario,
+montoDescuento:descProducto,
+subtotal:preTotal
+
+}
+
+arregloCarrito.push(objDetalle)
+dibujarTablaCarrito()
+
+
+document.getElementById("cod_producto").value=""
+document.getElementById("conceptoPro").value=""
+document.getElementById("cantidadProducto").value=0
+document.getElementById("uniMedida").value=""  
+
+
+document.getElementById("preUnitario").value=""
+document.getElementById("descProducto").value="0.00"
+document.getElementById("preTotal").value="0.00"
+}
+
+function dibujarTablaCarrito(){
+
+listaDetalle.innerHTML=""
+
+arregloCarrito.forEach((detalle)=>{
+
+    let fila=document.createElement("tr");
+    fila.innerHTML='<td>'+detalle.descripcion+'</td>'+
+                   '<td>'+detalle.cantidad+'</td>'+
+                   '<td>'+detalle.precioUnitario+'</td>'+
+                   '<td>'+detalle.montoDescuento+'</td>'+
+                   '<td>'+detalle.subtotal+'</td>'
+
+               let tdEliminar=document.createElement("td")
+               let botoneliminar=document.createElement("button")
+               botoneliminar.classList.add("btn","btn-danger")
+               botoneliminar.innerText="Eliminar"
+               botoneliminar.onclick = () => {
+                eliminarCarrito(detalle.codigoProducto);
+};
+
+               tdEliminar.appendChild(botoneliminar)
+               fila.appendChild(tdEliminar)
+                   listaDetalle.appendChild(fila)
+})
+}
+
+
+function eliminarCarrito(codProducto) {
+    console.log("Intentando eliminar el producto con código:",codProducto);
+    
+    arregloCarrito = arregloCarrito.filter((detalle) => {
+        console.log("Revisando producto con código:", detalle.codigoProducto);
+        
+        if (codProducto != detalle.codigoProducto) {
+            console.log("Producto con código", detalle.codigoProducto, "no coincide. Se mantiene en el carrito.");
+            return detalle;
+        } 
+    });
+
+    //console.log("Carrito actualizado:", arregloCarrito);
+    dibujarTablaCarrito();
+}
+
+

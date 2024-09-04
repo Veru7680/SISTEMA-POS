@@ -125,28 +125,28 @@
     <!----------------------------->
 
     <!-- CARRITO -->    
- <!-- VIDEO 15 MINUTO minuto 23:43 -->
-
+ 
     
     <div class="card">
-            <div class="card-header">
+        <div class="card-header">
                 <h3 class="card-title">Agregar productos</h3>
-                <div class="card-tools">
+            <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
                     </button>
                     <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
                         <i class="fas fa-times"></i>
                     </button>
-                </div>
             </div>
+        </div>
 
-            <div class="card-body">
+        <div class="card-body">
                 <div class="row">
                     <div class="form-group col-md-2">
                         <label for="">Cod. Producto</label>
                         <div class="input-group form-group">
                             <input type="text" class="form-control" name="cod_producto" id="cod_producto" list="listaProductos">
+                            <input type="hidden" class="form-control" name="codproducto_sin" id="codproducto_sin" >
                             <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button" onclick="busProducto()">
                             <i class="fas fa-search"></i>
@@ -186,6 +186,7 @@
                     <label for="">U. Medida</label>
                         <div class="input-group form-group">
                         <input type="text" class="form-control" name="uniMedida" id="uniMedida">
+                        <input type="hidden" class="form-control" name="uniMedidaSin" id="uniMedidaSin" >
                         </div>
                     </div>
 
@@ -214,7 +215,7 @@
                     <div class="form-group col-md-1">
                     <label for="">&nbsp;</label>
                         <div class="input-group form-group">
-                        <button  class="btn btn-info btn-circle form-control">
+                        <button  class="btn btn-info btn-circle form-control" onclick="agregarCarrito()">
                         <i class="fas fa-plus"></i>
                         </button>
                         </div>
@@ -228,8 +229,26 @@
             </div>
 
             <div class="card-footer">
-               
+                <table class="table">
+                <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Cantidad</th>
+                            <th>P. Unitario</th>
+                            <th>Descuento</th>
+                            <th>P. Total</th>
+                            <th>------</th>
+                        </tr>
+                   
+                    <tbody id="listaDetalle">
+                        <!-- Las filas se llenarán aquí mediante JavaScript -->
+                    </tbody>
+                    
+                    </thead>
+                </table>
+            
             </div>
+
         </div>
 
 
