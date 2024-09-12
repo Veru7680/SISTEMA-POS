@@ -278,7 +278,38 @@ $.ajax({
     }
 })
 }
-
+/*--==================
+verificar Cufd
+==================---*/
+function verificarVigenciaCufd(){
+    //fecha actual
+let date=new Date()
+//obtener el ultimo registro
+var obj=""
+        $.ajax({
+            type:"POST",
+            url:"controlador/facturaControlador.php?crtUltimoCufd",
+            data:obj,
+            cache:false,
+            dataType:"json",
+            success:function(data){
+                //console.log(data)
+                //fecha del ultimo cufd de mi bas e de datos 
+                let vigCufdActual=new Date(data["fecha_vigencia"])
+                //console.log(vigCufdActual)
+                if(date.getTime()>vigCufdActual.getTime()){
+                    $("#panelInfo").before("<span class='text-warning'>Cufd caducado!!!</span><br>")
+                    $("#panelInfo").before("<span>Registrando Cufd...</span><br>")
+                    //registrarNuevoCufd()
+                }else{
+                   /* $("#panelInfo").before("<span class='text-success'>Cufd vigente, puede facturar!!!</span><br>")
+                    cufd=data["codigo_cufd"]
+                    codControlCufd=data["codigo_control"]
+                    fechaVigCufd=data["fecha_vigencia"]*/
+                }
+            }
+        })
+}
 /*--==================
 emitir factura
 ==================---*/

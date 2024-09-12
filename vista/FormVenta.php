@@ -115,6 +115,16 @@
                                 </select>
                             </div>
                         </div>
+                        <!---panel de avisos-->
+                        <div class="callout callout-info direct-chat-menssages" style="height:100px; width:290px;">
+                            <span class="list-unstyled" id="panelInfo"></span>
+                        </div>
+
+
+
+
+
+
                     </div>
                 </div>
             </div>
