@@ -1,160 +1,3 @@
-/*function MNuevoFactura(){
-    $("#modal-default").modal("show")
-
-    var obj=""
-    $.ajax({
-    type:"POST",
-     url:"vista/factura/FNuevoFactura.php",
-     data:obj,
-     success:function(data){
-        $("#content-default").html(data)
-     }
-
-    })
-}
-
-function regFactura() {
-    var formData = new FormData($("#FRegFactura")[0]);
-
-    
-
-        $.ajax({
-            type:"POST",
-             url:"controlador/facturaControlador.php?ctrRegFactura",
-             data:formData,
-             cache:false,
-             contentType:false,
-             processData:false,
-             success:function(data){
-                //console.log(data)
-                if(data="ok"){
-                    Swal.fire({
-                        title: "la Factura ha sido registrado",
-                        icon: "success",
-                        showConfirmButton: false,
-                        timer:1000
-                      })
-                      setTimeout(function(){
-                        location.reload()
-                      },1200)
-                }
-
-                else{
-                    Swal.fire({
-                        title: "ERROR!",
-                        icon: "error",
-                        showConfirmButton: false,
-                        timer:1000
-                      })
-                }
-             }
-        
-            })
-
-    
-   
-}
-
-
-function FEditFactura(id){
-    $("#modal-default").modal("show")
-
-    var obj=""
-    $.ajax({
-    type:"POST",
-     url:"vista/factura/FEditFactura.php?id="+id,
-     data:obj,
-     success:function(data){
-        $("#content-default").html(data)
-     }
-
-    })
-}
-
-
-function editFactura(){
-    //console.log(data)
-    var formData =new FormData($("#FEditFactura")[0])
-
-        
-        
-        $.ajax({
-            type:"POST",
-             url:"controlador/facturaControlador.php?ctrEditFactura",
-             data:formData,
-             cache:false,
-             contentType:false,
-             processData:false,
-             success:function(data){
-                //console.log(data)
-            
-                if(data="ok"){
-                   
-                    Swal.fire({
-                        icon: "success",
-                        showConfirmButton: false,
-                        title: "la Factura ha sido ACTUALIZADO",
-                        timer:1000
-                      })
-                      setTimeout(function(){
-                        location.reload()
-                      },1200)
-                      
-                }else{
-                    Swal.fire({
-                        title: "ERROR!",
-                        icon: "error",
-                        showConfirmButton: false,
-                        timer:1000
-                      })
-                }
-             }
-        
-            })
-
-    
-
-}
-
-function MElitUsuario(id){
-  
-    var obj={id:id}
-Swal.fire({
-    title: "estas seguro de eliminar usuario",
-    icon: "warning",
-    showDenyButton: true,
-    showCancelButton: false,
-    confirmButtonText:'Confirmar',
-    denyButtonText:'Cancelar',
-   
-}).then(result=>{
-    if(result.isConfirmed){
-        $.ajax({
-        type:"POST",
-        url:"controlador/usuarioControlador.php?ctrEliUsuario",
-        data:obj,
-         success:function(data){
-            
-            if(data=="ok"){
-                location.reload()
-            }else{
-                Swal.fire({
-                    icon: "error",
-                    showConfirmButton: false,
-                    title: "ERROR",
-                    text:"el usuario NO ha sido eliminado",
-                    timer:1200
-                  })
-            }
-        }
-            
-        }
-       
-    )
-    }
-})
-}*/
-
 
 /* variables globales */
 
@@ -162,10 +5,14 @@ var host="http://localhost:5000/"
 var codSistema="775FA42BE90F7B78EF98F57"
 var cuis="9272DC05"
 var nitEmpresa=338794023
-var token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTdXBlcmppY2hvMzMiLCJjb2RpZ29TaXN0ZW1hIjoiNzc1RkE0MkJFOTBGN0I3OEVGOThGNTciLCJuaXQiOiJINHNJQUFBQUFBQUFBRE0ydGpDM05ERXdNZ1lBOFFXMzNRa0FBQUE9IiwiaWQiOjYxODYwOCwiZXhwIjoxNzMzOTYxNjAwLCJpYXQiOjE3MDI0OTc2NjAsIm5pdERlbGVnYWRvIjozMzg3OTQwMjMsInN1YnNpc3RlbWEiOiJTRkUifQ.4K_pQUXnIhgI5ymmXoyL43i0pSk3uKCgLMkmQeyl67h7j55GSRsH120AD44pR0aQ1UX_FNYzWQBYrX6pWLd-1w"      
 var rsEmpresa="NEOMAC SRL"
 var telEmpresa="9422560"
-var dirEmpresa="Calle Puraca 129 AVENIDA 7MO ANILLO ZONA/BARRIO: TIERRAS NUEVAS UV:0135 MZA: 007"
+var dirEmpresa="Calle Pucara 129 AVENIDA 7MO ANILLO NRO. 7550 ZONA/BARRIO: TIERRAS NUEVAS UV:0135 MZA: 007"
+var token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTdXBlcmppY2hvMzMiLCJjb2RpZ29TaXN0ZW1hIjoiNzc1RkE0MkJFOTBGN0I3OEVGOThGNTciLCJuaXQiOiJINHNJQUFBQUFBQUFBRE0ydGpDM05ERXdNZ1lBOFFXMzNRa0FBQUE9IiwiaWQiOjYxODYwOCwiZXhwIjoxNzMzOTYxNjAwLCJpYXQiOjE3MDI0OTc2NjAsIm5pdERlbGVnYWRvIjozMzg3OTQwMjMsInN1YnNpc3RlbWEiOiJTRkUifQ.4K_pQUXnIhgI5ymmXoyL43i0pSk3uKCgLMkmQeyl67h7j55GSRsH120AD44pR0aQ1UX_FNYzWQBYrX6pWLd-1w"  
+
+var cufd;
+var codControlCufd;
+var fechaVigCufd;
 
 function verificarComunicacion(){
     var obj=""
@@ -381,6 +228,56 @@ function calcularTotal(){
     let descAdicional=parseFloat(document.getElementById("descAdicional").value)
     document.getElementById("totApagar").value=totalCarrito-descAdicional
 }
+/*--==================
+obtener cufd
+==================---*/
+
+function solicitudCufd(){
+    var obj={
+codigoAmbiente:2,
+codigoModalidad:2,
+codigoPuntoVenta:0,
+codigoPuntoVentaSpecified:true,
+codigoSistema:codSistema,
+codigoSucursal:0,
+nit:nitEmpresa,
+cuis:cuis
+    }
+    $.ajax({
+        type:"POST",
+        url:host+"api/Codigos/solicitudCufd?token="+token,
+        data:JSON.stringify(obj),
+        cache:false,
+        contentType:"application/json",
+        success:function(data){
+            console.log(data)
+            cufd=data["codigo"]
+            codControlCufd=data["codigoControl"]
+            fechaVigCufd=data["fechaVigencia"]
+        }
+    })
+    
+}
+/*--==================
+registrar Cufd
+==================---*/
+function registrarNuevoCufd(){
+var obj={
+    "cufd":cufd,
+    "fechaVigCufd":fechaVigCufd,
+    "codControlCufd":codControlCufd
+}
+
+$.ajax({
+    type:"POST",
+    data:obj,
+    url:"controlador/facturaControlador.php?ctrNuevoCufd",
+    cache:false,
+    success:function(data){
+        console.log(data)
+    }
+})
+}
 
 /*--==================
 emitir factura
@@ -432,9 +329,24 @@ function emitirFactura(){
                 direccion:dirEmpresa,
                 codigoPuntoVenta:0,
                 fechaEmision:fechaFactura,
-                nombreRazonSocial:rsCliente
+                nombreRazonSocial:rsCliente,
+                codigoTipoDocumentoIdentidad:tpDocumento,
+                numeroDocumento:nitCliente,
+                complemento:"",
+                codigoCliente:nitCliente,
+                codigoMetodoPago:metPago,
+                numeroTarjeta:null,
+                montoTotal:subTotal,
+                montoTotalSujetivoIva:totApagar,
+                montoGiftCard:0,
+                descuentoAdicional:descAdicional,
+                codigoExcepcion:"0",
+                cafc:null,
+                leyenda:"",
+                usuario:usuarioLogin,
+                codigoDocumentoSector:1
             },
-            detalle:{}
+            detalle:arregloCarrito
         }
 
     }
