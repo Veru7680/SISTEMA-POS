@@ -267,3 +267,13 @@
 
     </div>
 </div>
+
+<script>
+    setTimeout(() => {
+        verificarVigenciaCufd()
+    },4000);
+
+    setTimeout(() => {
+        extraerLeyenda()
+    },4000);
+</script>
