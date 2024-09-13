@@ -349,10 +349,38 @@ $.ajax({
 
 
 /*--==================
+validar formulario
+==================---*/
+function validarFormulario(){
+let numFactura=document.getElementById("numFactura").value
+let nitCliente=document.getElementById("nitCliente").value
+let emailCliente=document.getElementById("emailCliente").value
+let rsCliente=document.getElementById("rsCliente").value
+
+if(numFactura==null || numFactura.length==0){
+    $("#panelInfo").before("<span class='text-danger'>Asegurarse de llenar campos</span><br>")
+return false
+}else if(nitCliente==null || nitCliente.length==0){
+    $("#panelInfo").before("<span class='text-danger'>Asegurarse de llenar campos</span><br>")
+    return false
+}else if(emailCliente==null || emailCliente.length==0){
+    $("#panelInfo").before("<span class='text-danger'>Asegurarse de llenar campos</span><br>")
+    return false
+}else if(rsCliente==null || rsCliente.length==0){
+    $("#panelInfo").before("<span class='text-danger'>Asegurarse de llenar campos</span><br>")
+    return false}
+    return true
+}
+
+
+
+
+/*--==================
 emitir factura
 ==================---*/
 
 function emitirFactura(){
+    if(validarFormulario()== true){
     let date=new Date()
     let numFactura=parseInt(document.getElementById("numFactura").value)
     let fechaFactura=date.toISOString()
@@ -367,7 +395,7 @@ function emitirFactura(){
 
     let actEconomica=document.getElementById("actEconomica").value
     let emailCliente=document.getElementById("emailCliente").value
-
+/////seguir revisando el video BEST JSON FORMATTER AND JSON VALIDADOR:ONLINE 22:40----20
     var obj={
         codigoAmbiente:2,
         codigoDocumentoSector:1,
@@ -407,9 +435,12 @@ function emitirFactura(){
                 numeroTarjeta:null,
                 montoTotal:subTotal,
                 montoTotalSujetivoIva:totApagar,
+                tipoCambio:1,
+                codigoMoneda:1,
+                montoTotalMoneda:totApagar,
                 montoGiftCard:0,
                 descuentoAdicional:descAdicional,
-                codigoExcepcion:"0",
+                codigoExcepcion:0,
                 cafc:null,
                 leyenda:leyenda,
                 usuario:usuarioLogin,
@@ -419,5 +450,20 @@ function emitirFactura(){
         }
 
     }
+    $.ajax({
+        type:"POST",
+        url:host+"api/CompraVenta/recepcion",
+        data:JSON.stringify(obj),
+        cache:false,
+        contentType:"application/json",
+        processData:false,
+        success:function(data){
+            console.log(data)
+            
+           
+        }
+    })
+    
+}
 
 }
