@@ -73,6 +73,7 @@ function numFactura(){
         url:"controlador/facturaControlador.php?ctrNumFactura",
         data:obj,
         success:function(data){
+           // console.log(data)
         document.getElementById("numFactura").value=data
         }
     })
@@ -108,9 +109,10 @@ function calcularPreProd(){
     let descProducto=parseFloat(document.getElementById("descProducto").value)
     let preUnit=parseFloat(document.getElementById("preUnitario").value)
 
-    let preProducto=preUnit-descProducto
+
+    let preProducto=preUnit*cantPro
    
-    document.getElementById("preTotal").value=preProducto*cantPro
+    document.getElementById("preTotal").value=preProducto-descProducto
 }
 
 /*--
@@ -227,7 +229,9 @@ function calcularTotal(){
     //console.log(totalCarrito)
     document.getElementById("subTotal").value=totalCarrito
     let descAdicional=parseFloat(document.getElementById("descAdicional").value)
+    totApagar=totalCarrito-descAdicional
     document.getElementById("totApagar").value=totalCarrito-descAdicional
+    console.log(totApagar)
 }
 /*--==================
 obtener cufd
@@ -389,13 +393,14 @@ function emitirFactura(){
     let nitCliente=document.getElementById("nitCliente").value
     let metPago=parseInt(document.getElementById("metPago").value)
     let totApagar=parseFloat(document.getElementById("totApagar").value)
+    console.log(totApagar)
     let descAdicional=parseFloat(document.getElementById("descAdicional").value)
     let subTotal=parseFloat(document.getElementById("subTotal").value)
     let usuarioLogin=document.getElementById("usuarioLogin").innerHTML
 
     let actEconomica=document.getElementById("actEconomica").value
     let emailCliente=document.getElementById("emailCliente").value
-/////seguir revisando el video BEST JSON FORMATTER AND JSON VALIDADOR:ONLINE 22:40----20
+
     var obj={
         codigoAmbiente:2,
         codigoDocumentoSector:1,
@@ -408,7 +413,7 @@ function emitirFactura(){
         cufd:cufd,
         cuis:cuis,
         nit:nitEmpresa,
-        tipoFacturadoDocumento:1,
+        tipoFacturaDocumento:1,
         archivo:null,
         fechaEnvio:fechaFactura,
         hashArchivo:"",
@@ -434,7 +439,7 @@ function emitirFactura(){
                 codigoMetodoPago:metPago,
                 numeroTarjeta:null,
                 montoTotal:subTotal,
-                montoTotalSujetivoIva:totApagar,
+                montoTotalSujetoIva:totApagar,
                 tipoCambio:1,
                 codigoMoneda:1,
                 montoTotalMoneda:totApagar,
