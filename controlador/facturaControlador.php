@@ -31,7 +31,7 @@ class ControladorFactura
     require "../modelo/FacturaModelo.php";
 
     $data = array(
-      "codigo_factura" => $_POST["codigo_factura"],
+      "codFactura" => $_POST["codFactura"],
       "id_cliente" => $_POST["id_cliente"],
       "detalle" => $_POST["detalle"],
       "neto" => $_POST["neto"],

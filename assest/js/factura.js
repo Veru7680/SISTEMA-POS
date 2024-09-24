@@ -338,14 +338,14 @@ var obj=""
 /*--==================
 Transformar fecha de formato iso 8601
 ==================---*/
-function TransformarFecha(fechaISO){
+function transformarFecha(fechaISO){
     let fecha_iso=fechaISO.split("T")
     let hora_iso=fecha_iso[1].split(".")
     let fecha=fecha_iso[0]
     let  hora=hora_iso[0]
 
-    let fecha_hora=fecha+""+hora
-    return fecha_hora
+    let fecha_hora=fecha+" "+hora
+    return fecha_hora;
 }
 
 /*--==================
@@ -481,7 +481,7 @@ function emitirFactura(){
             if(data["codigoResultado"]!=908){
                 $("#panelInfo").before("<span class='text-danger'>Error, factura no emitida!!!! </span> <br>")
             }else{
-                $("#panelInfo").before("<span>Error, Registrando factura..... </span> <br>")
+                $("#panelInfo").before("<span> Registrando factura..... </span> <br>")
                 let datos={
                     codigoResultado:data["codigoResultado"],
                     codigoRecepcion:data["datoAdicional"]["codigoRecepcion"],
@@ -531,6 +531,24 @@ function registrarFactura(datos){
         cache:false,
         success:function(data){
             console.log(data)
+
+            if(data=="ok"){
+                Swal.fire({
+                    icon:"success",
+                    showConfirmButton:false,
+                    title:"Factura Registrada"
+                })
+                setTimeout(function(){
+                    location.reload()
+                }, 1000)
+            }else{
+                Swal.fire({
+                    icon:"error",
+                    showConfirmButton:false,
+                    title:"Error Registro",
+                    timer:1500
+                })
+            }
        
            
         }

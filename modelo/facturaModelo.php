@@ -87,13 +87,13 @@ class ModeloFactura{
   static public function mdlRegistrarFactura($data){
 
    
-      $codFactura=$data["codFactura"];
+      $codigo_factura=$data["codFactura"];
       $idCliente=$data["idCliente"];
       $detalle=$data["detalle"];
       $neto=$data["neto"];
       $descAdicional=$data["descAdicional"];
       $total=$data["total"];
-      $fechaEmision=$dat["fechaEmision"];
+      $fechaEmision=$data["fechaEmision"];
       $cufd=$data["cufd"];
       $cuf=$data["cuf"];
       $xml=$data["xml"];
@@ -101,8 +101,8 @@ class ModeloFactura{
       $usuario=$data["usuario"];
       $leyenda=$data["leyenda"];
 
-      $stmt=Conexion::conectar()->prepare("insert into factura(cod_factura, id_cliente, detalle, neto, descuento, total, fecha_emision, cufd, cuf, xml, id_usuario, usuario, leyenda) 
-      values('$codFactura', '$idCliente', '$detalle', '$neto', '$descAdicional', '$total', '$fechaEmision', '$cufd', '$cuf', '$xml', '$idUsuario', '$usuario', '$leyenda')");
+      $stmt=Conexion::conectar()->prepare("insert into factura(codigo_factura, id_cliente, detalle, neto, descuento, total, fecha_emision, cufd, cuf, xml, id_usuario, usuario, leyenda) 
+      values('$codigo_factura', '$idCliente', '$detalle', '$neto', '$descAdicional', '$total', '$fechaEmision', '$cufd', '$cuf', '$xml', '$idUsuario', '$usuario', '$leyenda')");
 
       if($stmt->execute()){
         return "ok";
