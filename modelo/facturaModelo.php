@@ -13,7 +13,8 @@ class ModeloFactura{
   }
 
   static public function mdlRegFactura($data){
-}
+
+  }
 
   static public function mdlInfoFactura($id){
     $stmt=Conexion::conectar()->prepare("select * from Factura where id_Factura=$id");
@@ -81,5 +82,36 @@ class ModeloFactura{
     return $stmt->fetch();
     $stmt->close();
     $stmt->null;
+  }
+
+  static public function mdlRegistrarFactura($data){
+
+   
+      $codFactura=$data["codFactura"];
+      $idCliente=$data["idCliente"];
+      $detalle=$data["detalle"];
+      $neto=$data["neto"];
+      $descAdicional=$data["descAdicional"];
+      $total=$data["total"];
+      $fechaEmision=$dat["fechaEmision"];
+      $cufd=$data["cufd"];
+      $cuf=$data["cuf"];
+      $xml=$data["xml"];
+      $idUsuario=$data["idUsuario"];
+      $usuario=$data["usuario"];
+      $leyenda=$data["leyenda"];
+
+      $stmt=Conexion::conectar()->prepare("insert into factura(cod_factura, id_cliente, detalle, neto, descuento, total, fecha_emision, cufd, cuf, xml, id_usuario, usuario, leyenda) 
+      values('$codFactura', '$idCliente', '$detalle', '$neto', '$descAdicional', '$total', '$fechaEmision', '$cufd', '$cuf', '$xml', '$idUsuario', '$usuario', '$leyenda')");
+
+      if($stmt->execute()){
+        return "ok";
+      }else{
+        return "error";
+      }
+  
+      $stmt->close();
+      $stmt->null();
+ 
   }
 }

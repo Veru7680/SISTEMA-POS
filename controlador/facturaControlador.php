@@ -8,6 +8,7 @@ if (isset($ruta["query"])) {
     $ruta["query"] == "ctrNumFactura" ||
     $ruta["query"] == "ctrNuevoCufd" ||
     $ruta["query"] == "crtUltimoCufd" ||
+    $ruta["query"] == "ctrRegistrarFactura" ||
     $ruta["query"] == "crtLeyenda" ||
     $ruta["query"] == "ctrEliFactura"
   ) {
@@ -118,5 +119,26 @@ echo json_encode($respuesta);
     require "../modelo/FacturaModelo.php";
     $respuesta=ModeloFactura::mdlLeyenda();
     echo json_encode($respuesta);
+  }
+
+  static public function ctrRegistrarFactura(){
+    require "../modelo/FacturaModelo.php";
+    $data=array(
+      "codFactura"=>$_POST["codFactura"],
+      "idCliente"=>$_POST["idCliente"],
+      "detalle"=>$_POST["detalle"],
+      "neto"=>$_POST["neto"],
+      "descAdicional"=>$_POST["descAdicional"],
+      "total"=>$_POST["total"],
+      "fechaEmision"=>$_POST["fechaEmision"],
+      "cufd"=>$_POST["cufd"],
+      "cuf"=>$_POST["cuf"],
+      "xml"=>$_POST["xml"],
+      "idUsuario"=>$_POST["idUsuario"],
+      "usuario"=>$_POST["usuario"],
+      "leyenda"=>$_POST["leyenda"],
+  );
+  $respuesta=ModeloFactura::mdlRegistrarFactura($data);
+  echo $respuesta;
   }
 }

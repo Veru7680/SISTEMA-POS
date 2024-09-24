@@ -57,6 +57,7 @@ function busCliente(){
            }
 
            document.getElementById("rsCliente").value=data["razon_social_cliente"]
+           document.getElementById("idCliente").value=data["id_cliente"]
            numFactura()
         }
     })
@@ -231,7 +232,7 @@ function calcularTotal(){
     let descAdicional=parseFloat(document.getElementById("descAdicional").value)
     totApagar=totalCarrito-descAdicional
     document.getElementById("totApagar").value=totalCarrito-descAdicional
-    console.log(totApagar)
+    //console.log(totApagar)
 }
 /*--==================
 obtener cufd
@@ -256,7 +257,7 @@ function solicitudCufd(){
                     cache:false,
                     contentType:"application/json",
                     success:function(data){
-                        console.log(data)
+                        //console.log(data)
                         cufd=data["codigo"]
                         codControlCufd=data["codigoControl"]
                         fechaVigCufd=data["fechaVigencia"]
@@ -335,6 +336,19 @@ var obj=""
 }
 
 /*--==================
+Transformar fecha de formato iso 8601
+==================---*/
+function TransformarFecha(fechaISO){
+    let fecha_iso=fechaISO.split("T")
+    let hora_iso=fecha_iso[1].split(".")
+    let fecha=fecha_iso[0]
+    let  hora=hora_iso[0]
+
+    let fecha_hora=fecha+""+hora
+    return fecha_hora
+}
+
+/*--==================
 solicitar Leyenda
 ==================---*/
 function extraerLeyenda(){
@@ -393,7 +407,7 @@ function emitirFactura(){
     let nitCliente=document.getElementById("nitCliente").value
     let metPago=parseInt(document.getElementById("metPago").value)
     let totApagar=parseFloat(document.getElementById("totApagar").value)
-    console.log(totApagar)
+    //console.log(totApagar)
     let descAdicional=parseFloat(document.getElementById("descAdicional").value)
     let subTotal=parseFloat(document.getElementById("subTotal").value)
     let usuarioLogin=document.getElementById("usuarioLogin").innerHTML
@@ -464,11 +478,61 @@ function emitirFactura(){
         processData:false,
         success:function(data){
             console.log(data)
-            
+            if(data["codigoResultado"]!=908){
+                $("#panelInfo").before("<span class='text-danger'>Error, factura no emitida!!!! </span> <br>")
+            }else{
+                $("#panelInfo").before("<span>Error, Registrando factura..... </span> <br>")
+                let datos={
+                    codigoResultado:data["codigoResultado"],
+                    codigoRecepcion:data["datoAdicional"]["codigoRecepcion"],
+                    cuf:data["datoAdicional"]["cuf"],
+                    sentDate:data["datoAdicional"]["sentDate"],
+                    xml:data["datoAdicional"]["xml"],
+                }
+                registrarFactura(datos)
+ 
+            }
            
         }
     })
-    
+}
 }
 
+function registrarFactura(datos){
+    let numFactura=document.getElementById("numFactura").value
+    let idCliente=document.getElementById("idCliente").value
+    let subTotal=parseFloat(document.getElementById("subTotal").value)
+    let descAdicional=parseFloat(document.getElementById("descAdicional").value)
+    let totApagar=parseFloat(document.getElementById("totApagar").value)
+    let fechaEmision=transformarFecha(datos["sentDate"])
+    let idUsuario=document.getElementById("idUsuario").value
+    let usuarioLogin=document.getElementById("usuarioLogin").innerHTML
+
+
+    let obj={
+        "codFactura":numFactura,
+        "idCliente":idCliente,
+        "detalle":JSON.stringify(arregloCarrito),
+        "neto":subTotal,
+        "descAdicional":descAdicional,
+        "total":totApagar,
+        "fechaEmision":fechaEmision,
+        "cufd":cufd,
+        "cuf":datos["cuf"],
+        "xml":datos["xml"],
+        "idUsuario":idUsuario,
+        "usuario":usuarioLogin,
+        "leyenda":leyenda
+    }
+    $.ajax({
+        type:"POST",
+        url:"controlador/facturaControlador.php?ctrRegistrarFactura",
+        data:obj,
+        cache:false,
+        success:function(data){
+            console.log(data)
+       
+           
+        }
+    })
 }
