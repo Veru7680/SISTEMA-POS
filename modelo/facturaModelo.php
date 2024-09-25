@@ -3,7 +3,7 @@ require_once "conexion.php";
 
 class ModeloFactura{
   static public function mdlInfoFacturas(){
-    $stmt=Conexion::conectar()->prepare("select * from Factura");
+    $stmt=Conexion::conectar()->prepare("SELECT id_factura, codigo_factura, razon_social_cliente, fecha_emision, total, estado_factura FROM factura JOIN cliente ON cliente.id_cliente=factura.id_cliente;");
     $stmt->execute();
 
     return $stmt->fetchAll();
@@ -17,7 +17,9 @@ class ModeloFactura{
   }
 
   static public function mdlInfoFactura($id){
-    $stmt=Conexion::conectar()->prepare("select * from Factura where id_Factura=$id");
+    $stmt=Conexion::conectar()->prepare("SELECT * FROM factura 
+JOIN cliente ON cliente.id_cliente=factura.id_cliente 
+where id_factura=$id");
     $stmt->execute();
 
     return $stmt->fetch();

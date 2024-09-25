@@ -148,6 +148,14 @@
                 </a>
               </li>
 
+
+              <li class="nav-item">
+                <a href="VFactura" class="nav-link">
+                  <i class="fas fa-file-invoice nav-icon"></i>
+                  <p>LISTAR FACTURAS</p>
+                </a>
+              </li>
+
             </ul>
           </li>
 

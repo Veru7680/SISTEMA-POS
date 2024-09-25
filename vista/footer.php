@@ -45,17 +45,18 @@
 <!--==============
 seccion de modals
 ============-->
+<!-- Sección de modals -->
 <div class="modal fade" id="modal-default">
-        <div class="modal-dialog">
-          <div class="modal-content" id="content-default">
-
-
-          </div>
-          <!-- /.modal-content -->
+    <div class="modal-dialog modal-xl"> <!-- Se agregó modal-lg aquí -->
+        <div class="modal-content" id="content-default">
+            <!-- Aquí va el contenido del modal -->
         </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 
       <!-- jquery-validation -->
 <script src="assest/plugins/jquery-validation/jquery.validate.min.js"></script>

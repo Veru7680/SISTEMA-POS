@@ -18,23 +18,14 @@
           <table id="example1" class="table table-bordered table-striped">
         <thead>
               <tr>
-              <th>#</th>
-            <th>Código de Factura</th>
-            <th>Cliente ID</th>
-            <th>Detalle</th>
-            <th>Neto</th>
-            <th>Descuento</th>
+              <th># Factura</th>
+            <th>Cliente</th>
+            <th>Emitido</th>
             <th>Total</th>
-            <th>Fecha de Emisión</th>
-            <th>CUFD</th>
-            <th>CUF</th>
-            <th>XML</th>
-            <th>Punto de Venta ID</th>
-            <th>Usuario ID</th>
-            <th>Usuario</th>
-            <th>Leyenda</th>
-                    <td>
-                      <button class="btn btn-primary" onclick="MNuevoFactura()">Nuevo</button>
+            <th>Estado</th>
+                  <td >
+                    <a href="FormVenta" class="btn btn-primary">Nuevo </a>
+                     <!-- <button class="btn btn-primary" onclick="MNuevoFactura()">Nuevo</button>-->
                     </td>
               </tr>
         </thead>
@@ -44,26 +35,28 @@
               foreach($factura as $value) {
                 ?>
                 <tr>
-                <td><?php echo $value["id_factura"]; ?></td>
                 <td><?php echo $value["codigo_factura"]; ?></td>
-                <td><?php echo $value["id_cliente"]; ?></td>
-                <td><?php echo $value["detalle"]; ?></td>
-                <td><?php echo $value["neto"]; ?></td>
-                <td><?php echo $value["descuento"]; ?></td>
-                <td><?php echo $value["total"]; ?></td>
+                <td><?php echo $value["razon_social_cliente"]; ?></td>
                 <td><?php echo $value["fecha_emision"]; ?></td>
-                <td><?php echo $value["cufd"]; ?></td>
-                <td><?php echo $value["cuf"]; ?></td>
-                <td><?php echo $value["xml"]; ?></td>
-                <td><?php echo $value["id_punto_venta"]; ?></td>
-                <td><?php echo $value["id_usuario"]; ?></td>
-                <td><?php echo $value["usuario"]; ?></td>
-                <td><?php echo $value["leyenda"]; ?></td>
+                <td><?php echo $value["total"]; ?></td>
+
+                <td><?php
+                    if( $value["estado_factura"]==1){
+                      ?>
+                      <span class="badge badge-success">Emitido</span>
+                    <?php
+                    }else{
+                      ?>
+                      <span class="badge badge-danger">Anulada</span>
+
+                    <?php
+                    }
+                    ?></td>
 
                 <td>
                     <div class="btn-group">
-                      <button class="btn btn-secondary" onclick="FEditFactura(<?php echo $value['id_factura']; ?>)">
-                        <i class="fas fa-edit"></i>
+                      <button class="btn btn-secondary" onclick="VerFactura(<?php echo $value['id_factura']; ?>)">
+                        <i class="fas fa-eye"></i>
                       </button>
                       <button class="btn btn-danger" onclick="MElitFactura(<?php echo $value['id_factura']; ?>)">
                         <i class="fas fa-trash"></i>

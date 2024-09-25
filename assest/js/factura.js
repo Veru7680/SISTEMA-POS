@@ -554,3 +554,52 @@ function registrarFactura(datos){
         }
     })
 }
+
+function MElitFactura(id){
+  
+    var obj = {id: id};
+    Swal.fire({
+        title: "¿ESTÁS SEGURO DE ELIMINAR LA FACTURA?",
+        icon: "warning",
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Confirmar',
+        denyButtonText: 'Cancelar',
+    }).then(result => {
+        if(result.isConfirmed){
+            $.ajax({
+                type: "POST",
+                url: "controlador/facturaControlador.php?ctrEliFactura", 
+                data: obj,
+                success: function(data) {
+                    if(data == "ok"){
+                        location.reload(); 
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            showConfirmButton: false,
+                            title: "ERROR",
+                            text: "La factura NO ha sido eliminada",
+                            timer: 1200
+                        });
+                    }
+                }
+            });
+        }
+    });
+}
+
+
+function VerFactura(id){
+    $("#modal-default").modal("show");
+
+    var obj = ""; 
+    $.ajax({
+        type: "POST",
+        url: "vista/factura/VerFactura.php?id=" + id,
+        data: obj,
+        success: function(data) {
+            $("#content-default").html(data); 
+        }
+    });
+}
