@@ -3,7 +3,7 @@ require_once "conexion.php";
 
 class ModeloFactura{
   static public function mdlInfoFacturas(){
-    $stmt=Conexion::conectar()->prepare("SELECT id_factura, codigo_factura, razon_social_cliente, fecha_emision, total, estado_factura FROM factura JOIN cliente ON cliente.id_cliente=factura.id_cliente;");
+    $stmt=Conexion::conectar()->prepare("SELECT id_factura, codigo_factura, razon_social_cliente, fecha_emision, total, estado_factura, cuf FROM factura JOIN cliente ON cliente.id_cliente=factura.id_cliente;");
     $stmt->execute();
 
     return $stmt->fetchAll();
@@ -28,8 +28,8 @@ where id_factura=$id");
     $stmt->null;
   }
   
-  static public function mdlEliFactura($id){
-    $stmt=Conexion::conectar()->prepare("delete from factura where id_factura=$id");
+  static public function mdlAnularFactura($cuf){
+    $stmt=Conexion::conectar()->prepare("update factura set estado_factura=0 where cuf='$cuf'");
 
     if($stmt->execute()){
       return "ok";

@@ -58,7 +58,7 @@
                       <button class="btn btn-secondary" onclick="VerFactura(<?php echo $value['id_factura']; ?>)">
                         <i class="fas fa-eye"></i>
                       </button>
-                      <button class="btn btn-danger" onclick="MElitFactura(<?php echo $value['id_factura']; ?>)">
+                      <button class="btn btn-danger" onclick="MElitFactura('<?php echo $value['cuf']; ?>')">
                         <i class="fas fa-trash"></i>
                       </button>
                     </div>
