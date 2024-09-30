@@ -230,9 +230,10 @@ function calcularTotal(){
     //console.log(totalCarrito)
     document.getElementById("subTotal").value=totalCarrito
     let descAdicional=parseFloat(document.getElementById("descAdicional").value)
+    //console.log(descAdicional)
     totApagar=totalCarrito-descAdicional
     document.getElementById("totApagar").value=totalCarrito-descAdicional
-    //console.log(totApagar)
+
 }
 /*--==================
 obtener cufd
@@ -407,7 +408,7 @@ function emitirFactura(){
     let nitCliente=document.getElementById("nitCliente").value
     let metPago=parseInt(document.getElementById("metPago").value)
     let totApagar=parseFloat(document.getElementById("totApagar").value)
-    //console.log(totApagar)
+    //console.log("mirrarara" +totApagar)
     let descAdicional=parseFloat(document.getElementById("descAdicional").value)
     let subTotal=parseFloat(document.getElementById("subTotal").value)
     let usuarioLogin=document.getElementById("usuarioLogin").innerHTML
@@ -452,7 +453,7 @@ function emitirFactura(){
                 codigoCliente:nitCliente,
                 codigoMetodoPago:metPago,
                 numeroTarjeta:null,
-                montoTotal:subTotal,
+                montoTotal:totApagar,
                 montoTotalSujetoIva:totApagar,
                 tipoCambio:1,
                 codigoMoneda:1,
@@ -503,7 +504,9 @@ function registrarFactura(datos){
     let idCliente=document.getElementById("idCliente").value
     let subTotal=parseFloat(document.getElementById("subTotal").value)
     let descAdicional=parseFloat(document.getElementById("descAdicional").value)
+    //console.log("mirar" +descAdicional)
     let totApagar=parseFloat(document.getElementById("totApagar").value)
+    //console.log(totApagar)
     let fechaEmision=transformarFecha(datos["sentDate"])
     let idUsuario=document.getElementById("idUsuario").value
     let usuarioLogin=document.getElementById("usuarioLogin").innerHTML
