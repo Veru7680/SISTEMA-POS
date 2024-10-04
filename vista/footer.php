@@ -35,6 +35,12 @@
 
 <!-- SweetAlert2 -->
 <script src="assest/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- daterangepicker -->
+<script src="assest/plugins/moment/moment.min.js"></script>
+<script src="assest/plugins/daterangepicker/daterangepicker.js"></script>
+
+<!-- ChartJS -->
+<script src="assest/plugins/chart.js/Chart.min.js"></script>
 
 <script src="assest/js/usuario.js"></script>
 <script src="assest/js/cliente.js"></script>

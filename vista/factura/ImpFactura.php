@@ -4,14 +4,19 @@ require_once "../../controlador/facturaControlador.php";
 require_once "../../assest/fpdf/fpdf.php";
 $id=$_GET["id"];
 $factura = ControladorFactura::ctrInfoFactura($id);
-$producto=json_decode($factura["detalle"],true)
+$producto=json_decode($factura["detalle"],true);
 
-?>
+class PDF extends FPDF{
+    function Footer(){
+        global $factura;
+        $this->SetY(-15);
+        $this->SetFont('Arial','I',8);
+        $this->Cell(0,10,utf8_decode($factura["leyenda"]),0,0,"C");
+    }
+}
 
-<?php
-
-
-$pdf = new FPDF();
+// Creación del objeto de la clase heredada
+$pdf = new PDF();
 $pdf->AddPage();
 
 //encabezado
@@ -58,8 +63,6 @@ $pdf->Cell(22,8,utf8_decode($value["cantidad"]),1,0,"L");
 $pdf->Cell(22,8,utf8_decode($value["precioUnitario"]),1,0,"L");
 $pdf->Cell(22,8,utf8_decode($value["montoDescuento"]),1,0,"L");
 $pdf->Cell(22,8,utf8_decode($value["subtotal"]),1,1,"L");
-
-
 }
 
 $pdf->setFont('Arial','B',10);
